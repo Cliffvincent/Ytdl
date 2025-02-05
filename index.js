@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const path = require("path");
+const cheerio = require("cheerio");
 
 const app = express();
 const PORT = 3000;
@@ -14,11 +15,13 @@ app.get("/", (req, res) => {
 app.get("/ytdl", async (req, res) => {
     const { url, format } = req.query;
 
-    if (!url.startsWith("https://youtu.be") && !url.startsWith("https://www.youtube.com")) {
-        return res.status(400).json({ error: "Please provide a valid YouTube link to download" });
+ if (!url.startsWith("https://youtu.be") && !url.startsWith("https://www.youtube.com")  || !format) {
+    return res.status(400).json({ error: "Please provide a valid YouTube link to download and format mp3 or mp4" });
     }
 
     try {
+
+/**
         const e = await axios.get("https://api.mp3youtube.cc/v2/sanity/key", {
             headers: {
                 "authority": "api.mp3youtube.cc",
@@ -64,7 +67,60 @@ app.get("/ytdl", async (req, res) => {
             }
         });
 
-        res.json({ downloadUrl: v });
+        res.json({ downloadUrl: v }); **/
+
+      const d = await axios.post(
+            'https://www.mediamister.com/get_youtube_video',
+            new URLSearchParams({ url: url }).toString(),
+      {
+            headers: {
+               'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36',
+               'Content-Type': 'application/x-www-form-urlencoded',
+               'sec-ch-ua-platform': '"Android"',
+ 'sec-ch-ua': '"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
+               'sec-ch-ua-mobile': '?1',
+               'x-requested-with': 'XMLHttpRequest',
+               'dnt': '1',
+               'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+               'origin': 'https://www.mediamister.com',
+               'sec-fetch-site': 'same-origin',
+               'sec-fetch-mode': 'cors',
+               'sec-fetch-dest': 'empty',
+               'referer': 'https://www.mediamister.com/free-youtube-video-downloader',
+               'accept-language': 'en-US,en;q=0.9,vi;q=0.8,pt;q=0.7,fr;q=0.6','priority': 'u=1, i',
+              },
+            }
+        );
+
+        const f = cheerio.load(d.data);
+        const $ = cheerio.load(f.data);
+
+        const title = $("h2").first().text().trim();
+        const thumbnail = $(".yt_thumb img").attr("src");
+
+        let downloadUrl = null;
+
+        if (format === "mp4") {
+            downloadUrl = $(".yt_format a")
+                .filter((_, el) => $(el).text().includes("360p"))
+                .attr("href");
+        } else if (format === "mp3") {
+            downloadUrl = $(".yt_format a")
+                .filter((_, el) => $(el).text().includes("131 kbps"))
+                .attr("href");
+        }
+
+        if (!downloadUrl) {
+            return res.status(404).json({ error: `No ${format} download link found` });
+        }
+    
+        res.json({
+            title,
+            thumbnail,
+            format,
+            downloadUrl,
+        });
+
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
