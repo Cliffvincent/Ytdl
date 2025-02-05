@@ -25,7 +25,6 @@ app.get("/ytdl", async (req, res) => {
         const e = await axios.get("https://api.mp3youtube.cc/v2/sanity/key", {
             headers: {
                 "authority": "api.mp3youtube.cc",
-                "accept": "*/*",
                 "content-type": "application/json",
                 "origin": "https://iframe.y2meta-uk.com",
                 "referer": "https://iframe.y2meta-uk.com/",
@@ -37,7 +36,6 @@ app.get("/ytdl", async (req, res) => {
         const g = await axios.post("https://api.mp3youtube.cc/v2/converter", requestBody, {
             headers: {
                 "authority": "api.mp3youtube.cc",
-                "accept": "*/*",
                 "content-type": "application/x-www-form-urlencoded",
                 "key": e.data.key,
                 "origin": "https://iframe.y2meta-uk.com",
@@ -51,7 +49,6 @@ app.get("/ytdl", async (req, res) => {
             responseType: "stream",
             headers: {
                 "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
                 "Accept-Encoding": "gzip, deflate, br, zstd",
                 "sec-ch-ua": '"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
                 "sec-ch-ua-mobile": "?1",
@@ -74,20 +71,11 @@ app.get("/ytdl", async (req, res) => {
             new URLSearchParams({ url: url }).toString(),
       {
             headers: {
-               'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36',
-               'Content-Type': 'application/x-www-form-urlencoded',
-               'sec-ch-ua-platform': '"Android"',
- 'sec-ch-ua': '"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
-               'sec-ch-ua-mobile': '?1',
-               'x-requested-with': 'XMLHttpRequest',
-               'dnt': '1',
-               'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-               'origin': 'https://www.mediamister.com',
-               'sec-fetch-site': 'same-origin',
-               'sec-fetch-mode': 'cors',
-               'sec-fetch-dest': 'empty',
-               'referer': 'https://www.mediamister.com/free-youtube-video-downloader',
-               'accept-language': 'en-US,en;q=0.9,vi;q=0.8,pt;q=0.7,fr;q=0.6','priority': 'u=1, i',
+                "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36",
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-Requested-With": "XMLHttpRequest",
+                "Origin": "https://www.mediamister.com",
+                "Referer": "https://www.mediamister.com/free-youtube-video-downloader"
               },
             }
         );
