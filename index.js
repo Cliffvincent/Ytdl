@@ -87,15 +87,11 @@ app.get("/ytdl", async (req, res) => {
 
         let downloadUrl = null;
 
-        if (format === "mp4") {
-            downloadUrl = $(".yt_format a")
-                .filter((_, el) => $(el).text().includes("360p"))
-                .attr("href");
-        } else if (format === "mp3") {
-            downloadUrl = $(".yt_format a")
-                .filter((_, el) => $(el).text().includes("131 kbps"))
-                .attr("href");
-        }
+          if (format === 'mp4') {
+            downloadUrl = $('.yt_format:contains("Download Video") a').eq(3).attr('href');
+        } else if (format === 'mp3') {
+            downloadUrl = $('.yt_format:contains("Download Audio") a').eq(6).attr('href');
+          }
 
 /**        if (!downloadUrl) {
             return res.status(404).json({ error: `No ${format} download link found` });
