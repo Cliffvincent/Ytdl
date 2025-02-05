@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://cdn0.iconfinder.com/data/icons/flat-round-arrow-arrow-head/512/Red_Arrow_Down-512.png"
+        type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://pp.piddu.dev/milk.js" data-ackee-server="https://pp.piddu.dev"
+        data-ackee-domain-id="93394347-a467-40b0-bc73-2026eb00e8a4" data-ackee-opts='{"detailed":true}'></script>
+    <link rel="stylesheet" href="/style.css">
+    <title>YouTube Downloader</title>
+</head>
+
+<body>
+    <div class="main-container min-h-screen">
+        <div class="heading">
+            <h1 class="text-white text-7xl font-bold mb-[3%]" id="heading">YouTube <span
+                    class="text-[#ffcc99]">Downloader</span></h1>
+        </div>
+        <div class="forms">
+            <div id="code-submit">
+                <form onsubmit="return false;">
+                    <div class="container">
+                        <div class="field">
+                            <div class="label">Video URL</div>
+                            <input id="inp" autocomplete="off" name="name" type="text"
+                                placeholder="Enter A YouTube Video URL" required />
+                        </div>
+                        <div class="field">
+                            <div class="label">Video Format</div>
+                            <select id="format" class="form-select w-full">
+                                <option selected value="mp4">MP4</option>
+                                <option value="mp3">MP3</option>
+                            </select>
+                        </div>
+                        <div class="video-details mb-10 w-full" id="details"></div>
+                        <button type="submit" id="download" class="submit">Download</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="/script.js"></script>
+</body>
+</html>
