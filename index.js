@@ -80,8 +80,7 @@ app.get("/ytdl", async (req, res) => {
             }
         );
 
-        const f = cheerio.load(d.data);
-        const $ = cheerio.load(f.data);
+        const $ = cheerio.load(d.data);
 
         const title = $("h2").first().text().trim();
         const thumbnail = $(".yt_thumb img").attr("src");
@@ -98,16 +97,11 @@ app.get("/ytdl", async (req, res) => {
                 .attr("href");
         }
 
-        if (!downloadUrl) {
+/**        if (!downloadUrl) {
             return res.status(404).json({ error: `No ${format} download link found` });
-        }
+        } **/
     
-        res.json({
-            title,
-            thumbnail,
-            format,
-            downloadUrl,
-        });
+        res.json({title, thumbnail, downloadUrl});
 
     } catch (error) {
         res.status(500).json({ error: error.message });
