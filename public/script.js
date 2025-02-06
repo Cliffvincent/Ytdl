@@ -107,6 +107,11 @@ const timeSince = (date) => {
 }
 
 const showCustomAlert = (message) => {
+    const existingAlert = document.querySelector('.custom-alert');
+    if (existingAlert) {
+        existingAlert.remove();
+    }
+
     const alertBox = document.createElement('div');
     alertBox.className = 'custom-alert show';
     alertBox.textContent = message;
@@ -121,11 +126,20 @@ const showCustomAlert = (message) => {
     }, 3000);
 };
 
+
 const sub = async () => {
     const format = document.getElementById("format").value;
     const url = document.getElementById("inp").value;
 
-    if (!validate(url)) return showCustomAlert("Invalid YouTube URL");
+    if (!url.trim()) {
+        showCustomAlert("Please enter a YouTube URL.");
+        return;
+    }
+
+    if (!validate(url)) {
+        showCustomAlert("Invalid YouTube URL");
+        return;
+    }
 
     try {
         const response = await fetch(`/ytdl?_0x1b5a=${url}&_0x2d7c=${format}`);
@@ -140,6 +154,7 @@ const sub = async () => {
         showCustomAlert("Error fetching download link.");
     }
 };
+
 
 document.getElementById('inp').addEventListener('keyup', async (e) => {
     const url = e.target.value;
@@ -165,4 +180,3 @@ document.getElementById('inp').addEventListener('keyup', async (e) => {
 
 
 btn.addEventListener("click", sub);
-
