@@ -301,38 +301,38 @@ i {
     transition: opacity 0.3s ease-in-out;
 }
 
-/* Ensure the details container is visible */
+/* Ensure the details container is visible 
 #details {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
 
-/* Ensure child elements are visible */
+ Ensure child elements are visible 
 #details * {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
 
-/* Add some temporary styles for debugging */
+ Add some temporary styles for debugging 
 #details {
-    border: 2px solid red; /* Temporary border to visualize the container */
+    border: 2px solid red; /* Temporary border to visualize the container 
 }
 
 #details a {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    border: 2px solid green; /* Temporary border to visualize the link */
+    border: 2px solid green; /* Temporary border to visualize the link 
 }
 
 #details img {
     display: block !important;
-    border: 2px solid blue; /* Temporary border to visualize the image */
+    border: 2px solid blue; /* Temporary border to visualize the image 
 }
 
 #details div {
     display: block !important;
-    border: 2px solid yellow; /* Temporary border to visualize the div */
-}
+    border: 2px solid yellow; /* Temporary border to visualize the div
+} */
