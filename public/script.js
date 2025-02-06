@@ -148,12 +148,13 @@ document.getElementById('inp').addEventListener('keyup', async (e) => {
     const data = await fetchData(url);
     const video = data;
     document.getElementById('details').innerHTML = `
-        <a target="_blank" href="${video.url}"
+        <a target="_blank" href="${video.url || video.link}"
         class="flex flex-col items-center rounded-lg border shadow-md md:flex-row border-gray-700 bg-[#ffffff0d]">
         <img class="pointer object-cover w-full h-96 my-2 mx-6 lg:mx-2 rounded-lg h-auto w-[94%] lg:w-64"
         src="${video.thumbHigh}" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">${video.title}</h5>
+            <p class="mb-3 font-normal text-gray-200">${video.description}</p>
             <p class="mb-3 font-normal text-gray-200">Duration: ${video.duration}</p>
             <p class="mb-3 font-normal text-gray-200">Channel: ${video.channelTitle}</p>
             <p class="mb-3 font-normal text-gray-200">Views: ${formatter.format(video.viewCount)}</p>
@@ -161,6 +162,7 @@ document.getElementById('inp').addEventListener('keyup', async (e) => {
         </div>
         </a>`;
 });
+
 
 btn.addEventListener("click", sub);
 
