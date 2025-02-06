@@ -273,67 +273,57 @@ i {
   display: block;
 }
 
-/* Custom Alert Styles */
+
+
 .custom-alert {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 20px;
-    background-color: #333;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     text-align: center;
     font-size: 16px;
     max-width: 90%;
-    width: 300px;
+    width: 320px;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translate(-50%, -20px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
+
 
 .custom-alert.show {
     opacity: 1;
+    transform: translate(-50%, 0);
 }
+
 
 .custom-alert.hide {
     opacity: 0;
+    transform: translate(-50%, -20px);
 }
 
 
-/* Ensure the details container is visible 
-#details {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+.custom-alert .close-btn {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
 }
 
- Ensure child elements are visible 
-#details * {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+.custom-alert .close-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
 
- Add some temporary styles for debugging 
-#details {
-    border: 2px solid red; /* Temporary border to visualize the container 
-}
-
-#details a {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    border: 2px solid green; /* Temporary border to visualize the link 
-}
-
-#details img {
-    display: block !important;
-    border: 2px solid blue; /* Temporary border to visualize the image 
-}
-
-#details div {
-    display: block !important;
-    border: 2px solid yellow; /* Temporary border to visualize the div
-} */
