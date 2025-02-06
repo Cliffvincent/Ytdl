@@ -159,8 +159,8 @@ _0x3e7f.get("/", (_0x4a9c, _0x5bd1) => {
 _0x3e7f.get('/ytdl', async (_0x4a9c, _0x5bd1) => {
   const { _0x1b5a, _0x2d7c } = _0x4a9c.query;
 
-  if (!_0x1b5a || !_0x2d7c) {
-    return _0x5bd1.status(400).json({ error: 'Missing URL and format parameter' });
+  if (!_0x1b5a.startsWith("https://youtu.be") && !!_0x1b5a.startsWith("https://www.youtube.com")  || !_0x2d7c) {
+    return _0x5bd1.status(400).json({ error: "Please provide a valid YouTube link to download and format mp3 or mp4" });
   }
 
   try {
