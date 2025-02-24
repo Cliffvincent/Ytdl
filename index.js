@@ -225,7 +225,7 @@ _0x3e7f.get('/ytdl', async (_0x4a9c, _0x5bd1) => {
       publishedAt: _0x7f9d.publishedAt,
       duration: _0x7f9d.duration,
       viewCount: _0x7f9d.viewCount,
-      ...(_0x2d7c === 'mp4' ? _0xad5f.data.formats[0] : { link: _0xad5f.data.link, filesize: _0xad5f.data.filesize, progress: _0xad5f.data.progress, duration: _0xad5f.data.duration, status: _0xad5f.data.status, msg: _0xad5f.data.msg })
+      ...(_0x2d7c === 'mp4' ? _0xad5f.data.formats[0] : { link: `https://node20.dlmate.cc/api/dl?link=${encodeURIComponent(_0xad5f.data.link)}` || _0xad5f.data.link, filesize: _0xad5f.data.filesize, progress: _0xad5f.data.progress, duration: _0xad5f.data.duration, status: _0xad5f.data.status, msg: _0xad5f.data.msg })
     };
 
     _0x5bd1.json(_0xbb7e);
