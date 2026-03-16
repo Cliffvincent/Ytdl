@@ -128,13 +128,6 @@ background:#ffcc99;
 color:#fff
 }
 
-.video-details{
-width:100%;
-overflow-x:auto;
-overflow-y:hidden;
--webkit-overflow-scrolling:touch
-}
-
 .video-details img{
 width:100%;
 max-width:320px;
@@ -181,6 +174,12 @@ padding:15px
 
 .forms{
 padding:20px
+}
+
+.video-details .flex{
+overflow-x:auto;
+white-space:nowrap;
+-webkit-overflow-scrolling:touch;
 }
 
 .video-details a{
