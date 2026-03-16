@@ -184,7 +184,8 @@ padding:20px
 }
 
 .video-details a{
-flex-direction:column!important
+min-width:600px;
+display:flex
 }
 
 .video-details img{
