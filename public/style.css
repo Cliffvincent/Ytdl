@@ -189,7 +189,10 @@ display:flex
 }
 
 .video-details img{
-max-width:100%
+width:auto;
+max-width:100%;
+height:auto;
+border-radius:8px
 }
 
 }
