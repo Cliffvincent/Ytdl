@@ -130,7 +130,9 @@ color:#fff
 
 .video-details{
 width:100%;
-overflow:hidden
+overflow-x:auto;
+overflow-y:hidden;
+-webkit-overflow-scrolling:touch
 }
 
 .video-details img{
