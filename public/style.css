@@ -176,14 +176,15 @@ padding:15px
 padding:20px
 }
 
-.video-details .flex{
+.video-details{
+width:100%;
 overflow-x:auto;
-white-space:nowrap;
--webkit-overflow-scrolling:touch;
+overflow-y:hidden;
+-webkit-overflow-scrolling:touch
 }
 
 .video-details a{
-min-width:600px;
+min-width: 500px;
 display:flex
 }
 
