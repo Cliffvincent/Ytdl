@@ -134,6 +134,21 @@ max-width:320px;
 border-radius:8px
 }
 
+.iframe{
+width:100%;
+margin-top:24px;
+overflow:hidden;
+border-radius:10px;
+background:#121212
+}
+
+.iframe iframe{
+display:block;
+width:100%;
+min-height:600px;
+border:0
+}
+
 .custom-alert{
 position:fixed;
 top:20px;
@@ -193,6 +208,10 @@ width:auto;
 max-width:100%;
 height:auto;
 border-radius:8px
+}
+
+.iframe iframe{
+min-height:520px
 }
 
 }

@@ -55,9 +55,41 @@
 				</div>
 			</form>
 		</section>
+
+		<div class="iframe" id="converter-container" hidden>
+			<iframe id="converter-frame" title="YouTube converter" src="about:blank"
+				frameborder="0" loading="lazy" referrerpolicy="no-referrer"></iframe>
+		</div>
 	</main>
 
 	<script src="/script.js"></script>
+	<script>
+		(() => {
+			const input = document.getElementById("inp");
+			const container = document.getElementById("converter-container");
+			const frame = document.getElementById("converter-frame");
+
+			const getVideoId = (value) => {
+				const match = value.match(
+					/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/
+				);
+				return match ? match[1] : null;
+			};
+
+			input.addEventListener("input", () => {
+				const id = getVideoId(input.value.trim());
+
+				if (!id) {
+					frame.src = "about:blank";
+					container.hidden = true;
+					return;
+				}
+
+				frame.src = `https://v2.y2jar.cc/?id=${encodeURIComponent(id)}`;
+				container.hidden = false;
+			});
+		})();
+	</script>
 </body>
 </html>
 
